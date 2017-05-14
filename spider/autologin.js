@@ -11,6 +11,8 @@ var casper = require('casper').create({
         
     }
 });
+casper.options.waitTimeout = 40000;
+
 phantom.cookiesEnabled = true;
 casper.options.onResourceRequested = function(C, requestData, request) {
     //utils.dump(requestData);
@@ -24,7 +26,8 @@ casper.on('remote.message', function(message) {
 var loginCookie = [
 
 {
-    "domain": "www.188188188188b.com",
+    //"domain": "www.188188188188b.com",
+    "domain" : "sb.188188188188b.com",
     "hostOnly": true,
     "httpOnly": true,
     "name": "ASP.NET_SessionId",
@@ -33,7 +36,7 @@ var loginCookie = [
     "secure": false,
     "session": true,
     "storeId": "0",
-    "value": "e2rylcofnupktldawepge5hz",
+    "value": "4sl032cn3vqb21tiub1yxrvs",
     "id": 4
 }
 ]
@@ -45,11 +48,21 @@ for(var i=0;i<loginCookie.length;i+=1){
 
 console.log("starting...");
 //First step is to open Facebook
-casper.start().thenOpen("https://www.188188188188b.com/zh-cn/sports", function() {
+//TODO:登录后要用这个去获取数据，之前的事iframe
+//https://sb.188188188188b.com/zh-cn/sports?q=PoVIMwbDZTjGy49W2jmo9w..&country=CN&currency=RMB&tzoff=480&allowRacing=false&reg=China
+// 原始地址：https://www.188188188188b.com/zh-cn/sports
+var sprotLink = 'https://sb.188188188188b.com/zh-cn/sports?q=PoVIMwbDZTjGy49W2jmo9w..&country=CN&currency=RMB&tzoff=480&allowRacing=false&reg=China';
+casper.start().thenOpen(sprotLink, function() {
     console.log("Facebook website opened");
     
 });
-
+// request bet 直接发ajax请求貌似行不通
+// var requestLink = 'https://sb.188188188188b.com/zh-cn/Service/MyBetService?GetMyBet&ts=1494771809618&_=1494770988180';
+// casper.open(requestLink,function(data){
+//     console.log('do ajax reqeust')
+    
+//     console.log(JSON.stringify(data),'this is request data')
+// })
 
 // casper.then(function(){
 //     console.log("Login using username and password");
@@ -73,23 +86,40 @@ casper.start().thenOpen("https://www.188188188188b.com/zh-cn/sports", function()
 
 
 casper.then(function(){
+    console.log('before ajax loaded')
     casper.wait(5000,function(){
         console.log("Make a screenshot and save it as AfterLogin.png");
         casper.capture('AfterLogin.png');
     })
 })
 
-//  casper.thenOpen('https://www.188188188188b.com/zh-cn/sports',function(){
-//      console.log('Open Sport Success!')
-//  })
 
-casper.then(function(){
-    console.log("hello this is query ")
-    this.evaluate(function(){
-    var list = document.querySelector('.BetreceiptContent');
-    console.log(list,'123')
+// casper.waitForSelectorTextChange('#right-panel',function(){
+//     this.captureSelector('yoursitelist.png', '#right-panel');
+// })
+
+
+// id="tabMyBet""
+// casper.waitFor(function check() {
+//     return this.evaluate(function() {
+//         return document.querySelectorAll('#right-panel').length >= 1;
+//     });
+// }, function then() {
+//     this.captureSelector('yoursitelist.png', '#right-panel');
+// });
+function loopBetList(){
+    casper.then(function(){
+        console.log("hello this is query ")
+        this.evaluate(function(){
+            var list = document.querySelector('.BetreceiptContent');
+            console.log(list.outerHTML,'123');
+        })
+        //loopBetList();
     })
-})
+}
+
+loopBetList();
+
 
  
 casper.run();
