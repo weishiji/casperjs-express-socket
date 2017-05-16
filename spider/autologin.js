@@ -109,12 +109,19 @@ casper.then(function(){
 // });
 function loopBetList(){
     casper.then(function(){
+        this.evaluate(function(){
+            var tabBtn = document.querySelector('#tabMyBet')
+            tabBtn.click();
+        })
+    })
+    casper.wait(2000)
+    casper.then(function(){
         console.log("hello this is query ")
         this.evaluate(function(){
             var list = document.querySelector('.BetreceiptContent');
-            console.log(list.outerHTML,'123');
+            console.log(list.outerHTML,'---------');
         })
-        //loopBetList();
+        loopBetList();
     })
 }
 

@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var exec = require("child_process").exec;
-exec('casperjs ./casper/startup.js',function(err,stdout,stderr){
-    console.log('stdout: ' + stdout);
-});
+//TODO:autologin
+// exec('casperjs ./spider/autologin.js',function(err,stdout,stderr){
+//     console.log('stdout: ' + stdout);
+// });
 
 
 /* GET home page. */
