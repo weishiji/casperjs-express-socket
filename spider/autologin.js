@@ -107,6 +107,7 @@ casper.then(function(){
 // }, function then() {
 //     this.captureSelector('yoursitelist.png', '#right-panel');
 // });
+var count = 0;
 function loopBetList(){
     casper.then(function(){
         this.evaluate(function(){
@@ -114,13 +115,12 @@ function loopBetList(){
             tabBtn.click();
         })
     })
-    casper.wait(2000)
+    casper.wait(4000)
     casper.then(function(){
-        console.log("hello this is query ")
-        this.evaluate(function(){
+        this.evaluate(function(_count){
             var list = document.querySelector('.BetreceiptContent');
-            console.log(list.outerHTML,'---------');
-        })
+            console.log(list.outerHTML.replace(/data-reactid=".[^"]+/g,''),'==============>',_count);
+        },++count)
         loopBetList();
     })
 }
