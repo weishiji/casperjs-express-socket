@@ -128,8 +128,9 @@ function loopBetList(){
     // })
     casper.then(function(){
         this.evaluate(function(_count){
+            console.log('<p>'+_count+'</p>')
             var list = document.querySelector('.BetreceiptContent');
-            console.log(list.outerHTML.replace(/data-reactid=".[^"]+/g,''),'==============>',_count);
+            console.log(list.outerHTML.replace(/data-reactid=".[^"]+/g,''));
         },++count)
         loopBetList();
     })

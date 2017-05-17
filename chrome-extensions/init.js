@@ -33,8 +33,8 @@ $(function(){
                 console.log(dt)
             })    
         }
-        
     })
+    
 })
 //增加监听事件
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
