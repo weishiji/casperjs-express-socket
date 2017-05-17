@@ -109,13 +109,23 @@ casper.then(function(){
 // });
 var count = 0;
 function loopBetList(){
-    casper.then(function(){
+    casper.wait(4000)
+    casper.waitFor(function check(){
+        return casper.evaluate(function(){
+            return document.querySelectorAll('#tabMyBet').length == 1;
+        })
+    },function then(){
         this.evaluate(function(){
-            var tabBtn = document.querySelector('#tabMyBet')
+            var tabBtn = document.querySelector('#tabMyBet a')
             tabBtn.click();
         })
     })
-    casper.wait(4000)
+    // casper.then(function(){
+    //     this.evaluate(function(){
+    //         var tabBtn = document.querySelector('#tabMyBet')
+    //         tabBtn.click();
+    //     })
+    // })
     casper.then(function(){
         this.evaluate(function(_count){
             var list = document.querySelector('.BetreceiptContent');
