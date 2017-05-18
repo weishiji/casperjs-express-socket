@@ -1,4 +1,4 @@
-var socket = io.connect('http://localhost:3000');
+var socket = io.connect(window.location.origin);
 socket.on('start', function (data) {
     document.body.innerHTML = data.msg;
 });
