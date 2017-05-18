@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
-    ,"production" : "forever start -c \"node ./bin/www\" /path/to/app/dir/"
+    "start": "node ./bin/www",
+    "production": "forever start -c \"node ./bin/www\" /path/to/app/dir/"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
+    "cheerio": "^0.22.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "express": "~4.15.2",
