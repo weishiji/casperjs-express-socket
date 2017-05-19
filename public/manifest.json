@@ -1,0 +1,30 @@
+{
+  "name": "Fuck",
+  "short_name": "Fuck Shit",
+  "icons": [{
+    "src": "public/images/icons/icon-58x58.png",
+    "sizes": "58x58",
+    "type": "image/png"
+  }, {
+    "src": "public/images/icons/icon-80x80.png",
+    "sizes": "80x80",
+    "type": "image/png"
+  }, {
+    "src": "public/images/icons/icon-120x120.png",
+    "sizes": "120x120",
+    "type": "image/png"
+  },{
+    "src": "public/images/icons/icon-144x144.png",
+    "sizes": "144x144",
+    "type": "image/png"
+  },{
+    "src": "public/images/icons/icon-180x180.png",
+    "sizes": "180x180",
+    "type": "image/png"
+  }],
+  "start_url": "/?utm_source=homescreen",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#FFFFFF",
+  "gcm_sender_id": "482941778795"
+}

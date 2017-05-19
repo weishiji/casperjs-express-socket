@@ -15,11 +15,12 @@ function start(){
             var $ = cheerio.load(dataStr,{
                 decodeEntities : false
             });
+            console.log(data.toString())
             var $betList = $('.BetreceiptContent');
             if($betList.length){
                 $betList.children('div.hidden').remove();
                 var sendStr = $betList.html();
-                console.log(sendStr)
+                
                 io.sockets.emit('start', {msg: sendStr})
             }
         })
