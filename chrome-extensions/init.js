@@ -34,6 +34,19 @@ $(function(){
             })    
         }
     })
+    $('#start-production').on('click',function(){
+        var cookie = getSession(allCookieObj);
+        if(cookie){
+            $.ajax({
+                url : 'http://www.coderwe.com:8080/rest/save_cookie'
+                //url : 'http://47.93.255.100/rest/save_cookie'
+                ,data : {'b_session' : JSON.stringify(cookie)}
+                ,type : 'POST'
+            }).done(function(dt){
+                console.log(dt)
+            })    
+        }
+    })
     
 })
 //增加监听事件

@@ -11,11 +11,11 @@ function start(){
     exec("kill $(ps aux|grep casperjs| awk '{print $2}')",function(){
         var casperCommand = spawn('casperjs',[autoLoginPath])
         casperCommand.stdout.on('data',function(data){
+            console.log(data.toString())
             var dataStr = '<div>' + data.toString() + '</div>';
             var $ = cheerio.load(dataStr,{
                 decodeEntities : false
             });
-            console.log(data.toString())
             var $betList = $('.BetreceiptContent');
             if($betList.length){
                 $betList.children('div.hidden').remove();
