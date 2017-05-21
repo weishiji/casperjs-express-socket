@@ -9,7 +9,9 @@ var cheerio = require('cheerio')
 function start(){
     var autoLoginPath = path.dirname(__dirname) + '/spider/autologin.js';
     console.log(autoLoginPath,'this is script path')
-    exec("kill $(ps aux|grep casperjs| awk '{print $2}')",function(){
+    exec("kill $(ps aux|grep casperjs| awk '{print $2}')",{
+        maxBuffer : '1024 * 1024'
+    },function(){
         var casperCommand = spawn('casperjs',[autoLoginPath])
         casperCommand.stdout.on('data',function(data){
             console.log(data.toString())
