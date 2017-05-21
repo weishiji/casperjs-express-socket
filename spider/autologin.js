@@ -107,9 +107,39 @@ casper.then(function(){
 // }, function then() {
 //     this.captureSelector('yoursitelist.png', '#right-panel');
 // });
+function getLoopTime(){
+    var looper = 6;
+    var d = new Date();
+    var currentHour = d.getHours();
+    switch(currentHour){
+        case 0:
+            looper = 15;// 15s
+        case 1:
+            looper = 15;// 15s
+            break;
+        case 2:
+            looper = 20;
+        case 3:
+            looper = 30;
+        case 4:
+            looper = 60;
+        case 5:
+            looper = 60;
+        case 6:
+            looper = 30;
+            break;
+        case 7:
+            looper = 10;
+            break;
+        default:
+            looper = 6;
+    }
+
+    return looper * 1000;
+}
 var count = 0;
 function loopBetList(){
-    casper.wait(4000)
+    casper.wait(getLoopTime())
     casper.waitFor(function check(){
         return casper.evaluate(function(){
             return document.querySelectorAll('#tabMyBet').length == 1;
