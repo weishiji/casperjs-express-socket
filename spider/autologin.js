@@ -36,7 +36,7 @@ var loginCookie = [
     "secure": false,
     "session": true,
     "storeId": "0",
-    "value": "kkf0f3rvk3qefm3zw2jhmrdh",
+    "value": "ugheyiczuoxae45c3qlscgup",
     "id": 4
 }
 ]
