@@ -160,7 +160,8 @@ function loopBetList(){
         this.evaluate(function(_count){
             console.log('<p>'+_count+'</p>')
             var list = document.querySelector('.BetreceiptContent');
-            console.log(list.outerHTML.replace(/data-reactid=".[^"]+/g,''));
+            //datareact-id=['"][^'"]+['"]
+            console.log(list.outerHTML.replace(/data-reactid=['"][^'"]+['"]/g,''));
         },++count)
         loopBetList();
     })
