@@ -163,10 +163,10 @@ function loopBetList(){
             var outputStr = list.outerHTML;
             outputStr = outputStr.replace('/<[^>]+\/?>/g','-');
             var regex = /([^-]+)(--)[^-]v[^v](--)([^-]+)/g;
-            outputStr = outputStr.replace(regex, function($1,$2,$3,$4){
+            var resultStr = outputStr.replace(regex, function($1,$2,$3,$4){
                 return $1 + 'v' + $4;
             });
-            console.log(outputStr)
+            console.log(resultStr)
             //datareact-id=['"][^'"]+['"]
             //<[^>]+\/?>
             //console.log(list.outerHTML.replace(/data-reactid=['"][^'"]+['"]/g,''));
