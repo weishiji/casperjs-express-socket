@@ -36,7 +36,7 @@ var loginCookie = [
     "secure": false,
     "session": true,
     "storeId": "0",
-    "value": "ugheyiczuoxae45c3qlscgup",
+    "value": "khy1d4nwvcujatvoq4sl0bgp",
     "id": 4
 }
 ]
@@ -160,8 +160,15 @@ function loopBetList(){
         this.evaluate(function(_count){
             console.log('<p>'+_count+'</p>')
             var list = document.querySelector('.BetreceiptContent');
+            var outputStr = list.outerHTML;
+            outputStr = outputStr.replace('/<[^>]+\/?>/g','-');
+            var regex = /([^-]+)(--)[^-]v[^v](--)([^-]+)/g;
+            var subst = `$1 v $4`;
+            outputStr = outputStr.replace(regex, subst);
+            console.log(outputStr)
             //datareact-id=['"][^'"]+['"]
-            console.log(list.outerHTML.replace(/data-reactid=['"][^'"]+['"]/g,''));
+            //<[^>]+\/?>
+            //console.log(list.outerHTML.replace(/data-reactid=['"][^'"]+['"]/g,''));
         },++count)
         loopBetList();
     })
