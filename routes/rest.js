@@ -15,6 +15,8 @@ function start(){
         var casperCommand = spawn('casperjs',[autoLoginPath])
         casperCommand.stdout.on('data',function(data){
             console.log(data.toString())
+            io.sockets.emit('start', {msg: data.toString()})
+            return;
             var dataStr = '<div>' + data.toString() + '</div>';
             var $ = cheerio.load(dataStr,{
                 decodeEntities : false
