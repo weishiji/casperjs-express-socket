@@ -161,7 +161,7 @@ function loopBetList(){
             console.log('<p>'+_count+'</p>')
             var list = document.querySelector('.BetreceiptContent');
             var outputStr = list.outerHTML;
-            outputStr = outputStr.replace('/<[^>]+\/?>/g','-');
+            outputStr = outputStr.replace(/<[^>]+\/?>/g,'-');
             var regex = /([^-]+)(--)[^-]v[^v](--)([^-]+)/g;
             var resultStr = outputStr.replace(regex, function($1,$2,$3,$4){
                 return $1 + 'v' + $4;
